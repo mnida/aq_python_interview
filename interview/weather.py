@@ -46,3 +46,30 @@ def process_csv(reader, writer):
             writer.write(f"{station},{date.strftime('%m/%d/%Y')},{min_temp},{max_temp},{start_temp},{end_temp}\n")
     
 
+
+
+### How would I have done with with pandas
+
+# import pandas as pd
+
+# df = pd.read_csv('csv', header=0)
+
+# df['datetime'] = pd.to_datetime(df['datetime'], format='%m/%d/%Y %H:%M:%S %p')
+# df['date'] = df['datetime'].dt.date
+# df['time'] = df['datetime'].dt.time
+
+# df.rename(columns={'temp': 'Air Temperatur'}, inplace=True)
+
+# new_df = df.groupby(['station', 'date'])
+
+# aggregated = new_df.agg(
+#     min_temp = ('temp', 'min'),
+#     max_temp = ('temp', 'max'),
+#     first_temp = ('temp', 'first'),
+#     last_temp = ('temp', 'last')
+# )
+
+# aggregated= aggregated.reset_index()
+# aggregated.columns = ['Station Name', 'Date', 'Min Temp', 'Max Temp', 'First Temp', 'Last Temp']
+# aggregated.to_csv('aggregated.csv', index=False)
+
